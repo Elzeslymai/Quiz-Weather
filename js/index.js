@@ -26,13 +26,13 @@ $(function () {
             var temps = 'images/icons/icon-1.svg';
             console.log();
 
-            if (data.main.humidity >= 20 && data.main.humidity < 40) {
+            if (data.clouds.all >= 20 && data.clouds.all < 40) {
                 temps = 'images/icons/icon-3.svg';
-            } else if (data.main.humidity >= 40 && data.main.humidity < 60) {
+            } else if (data.clouds.all >= 40 && data.clouds.all < 60) {
                 temps = 'images/icons/icon-6.svg';
-            } else if (data.main.humidity >= 60 && data.main.humidity < 80) {
+            } else if (data.clouds.all >= 60 && data.clouds.all < 80) {
                 temps = 'images/icons/icon-9.svg';
-            } else if (data.main.humidity > 80) {
+            } else if (data.clouds.all > 80) {
                 temps = 'images/icons/icon-10.svg';
             }
 
