@@ -33,6 +33,20 @@ $(function () {
 
             $('#layer1').append(layer1);
             $('#layer1').append(layer1_1);
+
+            var layer2 = data.wind.speed + ' m/s.';
+            $('#layer2').append(layer2);
+
+            var layer3 = data.weather[0].description + '.';
+            $('#layer3').append(layer3);
+
+            var layer4 = data.main.pressure + ' hpa.';
+            $('#layer4').append(layer4);
+
+            var layer5 = data.main.humidity + '%';
+            $('#layer5').append(layer5);
+
+            var layer6 = data.
         });
 
 
