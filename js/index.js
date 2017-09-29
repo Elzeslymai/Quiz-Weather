@@ -11,6 +11,14 @@ $(function () {
     $('#find').click(function () {
         var city = $('#city').val();
         console.log(city);
+        $('#layer1').empty();
+        $('#layer2').empty();
+        $('#layer3').empty();
+        $('#layer4').empty();
+        $('#layer5').empty();
+        $('#layer6').empty();
+        $('#layer7').empty();
+
 
 
         $.get("http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=41014b71583254732e462352f02946fe", function (data) {
@@ -18,11 +26,11 @@ $(function () {
             var temps = 'images/icons/icon-1.svg';
             console.log();
 
-            if (data.main.humidity > 20 && data.main.humidity < 40) {
+            if (data.main.humidity >= 20 && data.main.humidity < 40) {
                 temps = 'images/icons/icon-3.svg';
-            } else if (data.main.humidity > 40 && data.main.humidity < 60) {
+            } else if (data.main.humidity >= 40 && data.main.humidity < 60) {
                 temps = 'images/icons/icon-6.svg';
-            } else if (data.main.humidity > 60 && data.main.humidity < 80) {
+            } else if (data.main.humidity >= 60 && data.main.humidity < 80) {
                 temps = 'images/icons/icon-9.svg';
             } else if (data.main.humidity > 80) {
                 temps = 'images/icons/icon-10.svg';
@@ -46,7 +54,54 @@ $(function () {
             var layer5 = data.main.humidity + '%';
             $('#layer5').append(layer5);
 
-            var layer6 = data.
+            //เอาเลขสามหลักสุดท้าย
+            var str = data.sys.sunrise;
+            var str1 = str%1000;
+            
+            //แปลงสามหลักสุดท้ายให้เป็น String และเอาเลขสามหลักสุดท้ายมาต่อหลังเลขชุดเดิม
+            var bnt = '' + str1 + '';
+            var bnt1 = str + bnt;
+
+            //แปลงให้เป็น INTEGER
+            var datecode = parseInt(bnt1);
+            
+            //นำโค้ดที่ได้ไปแปลงเป็นวันที่และเวลา
+            var date = new Date(datecode);
+            
+            //เอาชั่วโมง
+            var date1 = date.getHours();
+            
+            //เอานาที
+            var date2 = date.getMinutes();
+            
+
+            var layer6 = date1 + ':' + date2;
+            $('#layer6').append(layer6);
+
+
+            //เอาเลขสามหลักสุดท้าย
+            var str2 = data.sys.sunset;
+            var str3 = str%1000;
+            
+            //แปลงสามหลักสุดท้ายให้เป็น String และเอาเลขสามหลักสุดท้ายมาต่อหลังเลขชุดเดิม
+            var bnt2 = '' + str3 + '';
+            var bnt3 = str2 + bnt2;
+
+            //แปลงให้เป็น INTEGER
+            var datecode1 = parseInt(bnt3);
+            
+            //นำโค้ดที่ได้ไปแปลงเป็นวันที่และเวลา
+            var date3 = new Date(datecode1);
+            
+            //เอาชั่วโมง
+            var date4 = date3.getHours();
+            
+            //เอานาที
+            var date5 = date3.getMinutes();
+
+            var layer7 = date4 + ':' + date5;
+            $('#layer7').append(layer7);
+
         });
 
 
